@@ -8,17 +8,10 @@ import queue
 
 class Solution:
     def maxDepth(self, root: Optional[TreeNode]) -> int:
-        q = queue.Queue()
-        q.put((root, 1))
-        max_step = 0
-        while q.qsize():
-            cur, cur_step = q.get()
-            if cur is None:
-                continue
-            max_step = max(max_step, cur_step)
-            if cur.left:
-                q.put((cur.left, cur_step + 1))
-            if cur.right:
-                q.put((cur.right, cur_step + 1))
+        if root is None:
+            return 0
         
-        return max_step
+        left = self.maxDepth(root.left)
+        right = self.maxDepth(root.right)
+
+        return max(left, right) + 1
