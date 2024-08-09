@@ -20,7 +20,7 @@ class RandomizedSet:
             return False
 
     def getRandom(self) -> int:
-        return random.sample(sorted(self.bag), 1)[0]
+        return random.choice(list(self.bag))
         
 
 
